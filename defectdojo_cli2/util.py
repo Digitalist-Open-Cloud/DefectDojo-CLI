@@ -17,6 +17,7 @@ class Util(object):
     ):
         headers = dict()
         headers["Authorization"] = "Token " + api_key
+        headers["User-Agent"] = "DefectDojoCli/1.0 (https://digitalist.cloud)"
         if not files:
             headers["Accept"] = "application/json"
             headers["Content-Type"] = "application/json"

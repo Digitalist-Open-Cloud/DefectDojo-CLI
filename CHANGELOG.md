@@ -1,5 +1,23 @@
 # Change log
 
+## [0.1.15] - 2025-02-20
+
+### Updated
+
+- Version fixes.
+
+## [0.1.14] - 2025-02-20
+
+### Updated
+
+- Changelog.
+
+## [0.1.13] - 2025-02-20
+
+### Changed
+
+- Set user agent to DefectDojoCli/1.0
+
 ## [0.1.12] - 2024-09-15
 
 ### Updated
