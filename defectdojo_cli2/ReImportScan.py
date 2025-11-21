@@ -9,8 +9,8 @@ from defectdojo_cli2.EnvDefaults import EnvDefaults
 class ReImportScan(object):
     def parse_cli_args(self):
         parser = argparse.ArgumentParser(
-            description="Perform <sub_command> related to announcements on DefectDojo",
-            usage="""defectdojo announcements <sub_command> [<args>]
+            description="Perform <sub_command> related to reimporting scans on DefectDojo",
+            usage="""defectdojo reimport_scan <sub_command> [<args>]
 
     You can use the following sub_commands:
         upload            Upload

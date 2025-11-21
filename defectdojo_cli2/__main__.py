@@ -8,6 +8,7 @@ from defectdojo_cli2 import Announcements
 from defectdojo_cli2 import ApiToken
 from defectdojo_cli2 import ImportLanguages
 from defectdojo_cli2 import ReImportScan
+from defectdojo_cli2 import Products
 from defectdojo_cli2 import __version__
 
 
@@ -26,6 +27,7 @@ class DefectDojoCLI(object):
             tests             Operations related to tests (tests --help for more details)
             import_languages  Operations related to import languages (import_languages --help for more details)
             reimport_scan     Operations related to reimport scans (reimport_scan --help for more details)
+            products          Operations related to products (products --help for more details)
         """,
             formatter_class=RichHelpFormatter,
         )
@@ -60,6 +62,9 @@ class DefectDojoCLI(object):
 
     def _reimport_scan(self):
         ReImportScan().parse_cli_args()
+
+    def _products(self):
+        Products().parse_cli_args()
 
     def _tests(self):
         Tests().parse_cli_args()

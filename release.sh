@@ -1,7 +1,10 @@
 #!/bin/bash
+set -e
 
 # Update version in pyproject.toml
-# Needed until we have a real handler for releases.
+# get version from pyproject.toml
+version=$(grep -E '^version = ' pyproject.toml | cut -d '"' -f 2)
+
 
 # Install/Update python3 build module
 poetry install
@@ -14,10 +17,14 @@ poetry build
 
 poetry publish
 
-# Commit ChangeLog and retag (so the tag points to the ChangeLog commit)
-git add CHANGELOG.md
-git commit -m "Release $version"
+# Commit ChangeLog and tag
 git tag -a "$version" -m "Release $version"
 
 # Push to remote repo
 git push origin main --follow-tags
+
+sleep 60
+docker build --build-arg VERSION=${version} . -t digitalist/defectdojo-cli2:$version --platform=linux/amd64 --no-cache
+docker tag digitalist/defectdojo-cli2:$version digitalist/defectdojo-cli2:latest
+docker push digitalist/defectdojo-cli2:$version
+docker push digitalist/defectdojo-cli2:latest

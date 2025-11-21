@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "defectdojo-cli2"
-version = "0.1.15"
+version = "0.1.16"
 description = "CLI Wrapper for DefectDojo using APIv2"
 authors = ["Mikke Schirén <mikke.schiren@digitalist.com>"]
 license = "MIT"
