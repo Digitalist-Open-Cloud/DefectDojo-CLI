@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.14.0-alpine3.21
 ARG VERSION="0.1.14"
 
 RUN pip install --no-cache-dir --upgrade pip && \
