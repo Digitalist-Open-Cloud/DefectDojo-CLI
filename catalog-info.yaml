@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: defectdojo-cli
+  title: DefectDojo CLI
+  description: DefectDojo CLI
+spec:
+  type: library
+  lifecycle: production
+  owner: digitalist-open-cloud

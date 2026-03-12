@@ -13,6 +13,8 @@ requests = "^2.32.5"
 tabulate = "^0.9.0"
 rich-argparse = "^1.7.2"
 setuptools = "^78.1.1"
+jinja2 = "^3.1.4"
+markdown = "^3.7"
 
 [tool.poetry.scripts]
 defectdojo = "defectdojo_cli2.__main__:main"
@@ -21,6 +23,12 @@ defectdojo = "defectdojo_cli2.__main__:main"
 pytest = "^8.3.3"
 requests-mock = "^1.12.1"
 flake8-pyproject = "^1.2.3"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+mkdocs-material = "^9.5.0"
 
 [build-system]
 requires = ["poetry-core"]

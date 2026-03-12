@@ -1,0 +1,32 @@
+site_name: DefectDojo CLI
+site_description: CLI wrapper for DefectDojo using APIv2
+site_author: Mikke Schirén
+repo_url: https://github.com/DefectDojo/defectdojo-cli
+edit_uri: ""
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Configuration: configuration.md
+  - Commands:
+      - announcements: commands/announcements.md
+      - api_token: commands/api_token.md
+      - engagements: commands/engagements.md
+      - findings: commands/findings.md
+      - import_languages: commands/import_languages.md
+      - products: commands/products.md
+      - reports: commands/reports.md
+      - reimport_scan: commands/reimport_scan.md
+      - tests: commands/tests.md
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
+  features:
+    - navigation.tabs
+
+plugins:
+  - search

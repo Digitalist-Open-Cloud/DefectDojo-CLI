@@ -7,6 +7,7 @@ from .ApiToken import ApiToken
 from .ReImportScan import ReImportScan
 from .Products import Products
 from .ImportLanguages import ImportLanguages
+from .Reports import Reports
 import pkg_resources  # part of setuptools
 
 __version__ = pkg_resources.get_distribution("defectdojo_cli2").version
