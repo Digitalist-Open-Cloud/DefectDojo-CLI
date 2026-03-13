@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:668cc7ca-7a6f-49d8-8d19-8c3e0acd28c6",
+  "serialNumber": "urn:uuid:4e209ac4-282c-4a25-ba13-4bdafa6fb069",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-03-13T10:46:57+00:00",
+    "timestamp": "2026-03-13T23:27:40+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "d6c6cd4f-3993-4ac8-8357-1e9c2d14d358",
+      "bom-ref": "bf99ee06-14ce-4e50-8875-120172462ab8",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "1dd1e31d-88ec-4c43-a420-5084227b1278",
+      "bom-ref": "036413dd-8fa0-4118-87e6-bd6c32d941fd",
       "type": "application",
       "name": "poetry.lock",
       "properties": [
@@ -266,15 +266,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:pypi/tabulate@0.9.0",
+      "bom-ref": "pkg:pypi/tabulate@0.10.0",
       "type": "library",
       "name": "tabulate",
-      "version": "0.9.0",
-      "purl": "pkg:pypi/tabulate@0.9.0",
+      "version": "0.10.0",
+      "purl": "pkg:pypi/tabulate@0.10.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "tabulate@0.9.0"
+          "value": "tabulate@0.10.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -302,20 +302,20 @@
   ],
   "dependencies": [
     {
-      "ref": "1dd1e31d-88ec-4c43-a420-5084227b1278",
+      "ref": "036413dd-8fa0-4118-87e6-bd6c32d941fd",
       "dependsOn": [
         "pkg:pypi/jinja2@3.1.6",
         "pkg:pypi/markdown@3.10.2",
         "pkg:pypi/requests@2.32.5",
         "pkg:pypi/rich-argparse@1.7.2",
         "pkg:pypi/setuptools@78.1.1",
-        "pkg:pypi/tabulate@0.9.0"
+        "pkg:pypi/tabulate@0.10.0"
       ]
     },
     {
-      "ref": "d6c6cd4f-3993-4ac8-8357-1e9c2d14d358",
+      "ref": "bf99ee06-14ce-4e50-8875-120172462ab8",
       "dependsOn": [
-        "1dd1e31d-88ec-4c43-a420-5084227b1278"
+        "036413dd-8fa0-4118-87e6-bd6c32d941fd"
       ]
     },
     {
@@ -385,7 +385,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/tabulate@0.9.0",
+      "ref": "pkg:pypi/tabulate@0.10.0",
       "dependsOn": []
     },
     {
