@@ -144,7 +144,7 @@ class Tests(object):
         response = self.list(**args)
 
         # Pretty print JSON response
-        Util().default_output(response, sucess_status_code=200)
+        Util().default_output(response, success_status_code=200)
 
     def get_test_type_by_tags(
         self, url, api_key, tags, tags_operator, engagement_id=None
@@ -313,7 +313,7 @@ class Tests(object):
         response = self.update(**args)
 
         # Pretty print JSON response
-        Util().default_output(response, sucess_status_code=200)
+        Util().default_output(response, success_status_code=200)
 
     def _create(self):
         # Read user-supplied arguments
@@ -404,7 +404,7 @@ class Tests(object):
         response = self.create(**args)
 
         # Pretty print JSON response
-        Util().default_output(response, sucess_status_code=200)
+        Util().default_output(response, success_status_code=200)
 
     def create(
         self,

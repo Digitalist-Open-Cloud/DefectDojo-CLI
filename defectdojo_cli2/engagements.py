@@ -211,7 +211,7 @@ class Engagements(object):
         response = self.create(**args)
 
         # Pretty print JSON response
-        Util().default_output(response, sucess_status_code=201)
+        Util().default_output(response, success_status_code=201)
 
     def close(self, url, api_key, engagement_id, **kwargs):
         # Prepare parameters
@@ -256,7 +256,7 @@ class Engagements(object):
         if response.status_code == 200:
             type(response).text = PropertyMock(return_value='{"return": "sucess"}')
         # Pretty print JSON response
-        Util().default_output(response, sucess_status_code=200)
+        Util().default_output(response, success_status_code=200)
 
     def update(
         self,
@@ -384,7 +384,7 @@ class Engagements(object):
         response = self.update(**args)
 
         # Pretty print JSON response
-        Util().default_output(response, sucess_status_code=200)
+        Util().default_output(response, success_status_code=200)
 
     def list(self, url, api_key, name=None, product_id=None, **kwargs):
         # Create parameters to be requested
@@ -435,7 +435,7 @@ class Engagements(object):
         response = self.list(**args)
 
         # Pretty print JSON response
-        Util().default_output(response, sucess_status_code=200)
+        Util().default_output(response, success_status_code=200)
 
     def reopen(self, url, api_key, engagement_id, **kwargs):
         # Prepare parameters
@@ -480,7 +480,7 @@ class Engagements(object):
         if response.status_code == 200:
             type(response).text = PropertyMock(return_value='{"return": "sucess"}')
         # Pretty print JSON response
-        Util().default_output(response, sucess_status_code=200)
+        Util().default_output(response, success_status_code=200)
 
     def get_engagements_by_test_tags(self, url, api_key, tags, tags_operator):
         request_params = dict()
