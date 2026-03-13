@@ -6,7 +6,7 @@ Reimport scan results into DefectDojo.
 
 - `create` - Reimport a scan
 
-## create
+## `create`
 
 Reimport scan results from a file.
 
@@ -39,6 +39,7 @@ defectdojo reimport_scan create [OPTIONS]
 ### Scan Types
 
 Common scan types include:
+
 - Nmap Scan
 - ZAP Scan
 - OpenVAS Scan

@@ -4,6 +4,8 @@ metadata:
   name: defectdojo-cli
   title: DefectDojo CLI
   description: DefectDojo CLI
+  annotations:
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: library
   lifecycle: production

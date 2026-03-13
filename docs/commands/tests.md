@@ -8,7 +8,7 @@ Manage tests in DefectDojo.
 - `get` - Get a specific test
 - `list-findings` - List findings for a test
 
-## list
+## `list`
 
 List tests.
 
@@ -40,7 +40,7 @@ defectdojo tests list \
   --engagement_id 1
 ```
 
-## get
+## `get`
 
 Get a specific test.
 
@@ -67,7 +67,7 @@ defectdojo tests get \
   --test_id 1
 ```
 
-## list-findings
+## `list-findings`
 
 List findings for a test.
 

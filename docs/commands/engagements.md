@@ -43,7 +43,7 @@ defectdojo engagements list \
   --product_id 1
 ```
 
-## get
+## `get`
 
 Get a specific engagement.
 
@@ -70,7 +70,7 @@ defectdojo engagements get \
   --engagement_id 1
 ```
 
-## create
+## `create`
 
 Create a new engagement.
 
@@ -112,7 +112,7 @@ defectdojo engagements create \
   --target_end 2026-03-31
 ```
 
-## close
+## `close`
 
 Close an engagement.
 
@@ -145,7 +145,7 @@ defectdojo engagements close \
   --engagement_id 1
 ```
 
-## list-notes
+## `list-notes`
 
 List notes for an engagement.
 

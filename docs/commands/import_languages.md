@@ -6,7 +6,7 @@ Import language information into DefectDojo.
 
 - `create` - Import languages from a CSV file
 
-## create
+## `create`
 
 Import languages from a CSV file.
 
@@ -35,6 +35,7 @@ defectdojo import_languages create [OPTIONS]
 ### CSV Format
 
 The CSV file should contain the following columns:
+
 - `name` - Language name (e.g., "Python")
 - `files` - Number of files
 - `blank` - Blank lines

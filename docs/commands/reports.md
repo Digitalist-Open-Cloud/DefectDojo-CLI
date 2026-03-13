@@ -29,18 +29,13 @@ defectdojo reports generate-for-product [OPTIONS]
 
 | Argument | Description | Default |
 |----------|-------------|---------|
-| `--report_type {HTML,PDF,JSON,CSV}` | Report type | HTML |
+| `--report_type {HTML,JSON}` | Report type | HTML |
 | `--include_executive_summary` | Include executive summary | False |
 | `--include_finding_notes` | Include finding notes | False |
 | `--include_finding_images` | Include finding images | False |
 | `--include_table_of_contents` | Include table of contents | False |
-| `--include_disclaimer` | Include disclaimer | False |
 | `--title TITLE` | Report title | |
-| `--active` | Filter to active findings only | False |
-| `--verified {1,2,3}` | Include verified findings | |
-| `--false_p {1,2,3}` | Include false positive findings | 2 |
-| `--duplicate {1,2,3}` | Include duplicate findings | 2 |
-| `--minimum_severity {Info,Low,Medium,High,Critical}` | Minimum severity | Info |
+| `--active` | Filter to active findings only (client-side) | False |
 | `--filename FILENAME` | Save report to file | stdout |
 | `--template TEMPLATE` | Custom HTML template file path | built-in template |
 
@@ -88,7 +83,7 @@ defectdojo reports generate-for-product \
   --filename report.html
 ```
 
-## generate-for-engagement
+## `generate-for-engagement`
 
 Generate a security report for an engagement.
 
@@ -133,8 +128,6 @@ defectdojo reports generate-for-engagement \
 
 - **HTML** - Renders a modern HTML report with severity counts, product/engagement info, and findings list
 - **JSON** - Raw JSON output from DefectDojo API
-- **PDF** - PDF document (binary output)
-- **CSV** - CSV spreadsheet
 
 ## Filtering Findings
 

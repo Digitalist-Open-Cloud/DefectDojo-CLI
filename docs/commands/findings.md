@@ -48,7 +48,7 @@ defectdojo findings list \
   --severity High
 ```
 
-## get
+## `get`
 
 Get a specific finding by ID.
 
@@ -75,7 +75,7 @@ defectdojo findings get \
   --finding_id 123
 ```
 
-## modify
+## `modify`
 
 Modify a finding.
 
@@ -120,7 +120,7 @@ defectdojo findings modify \
   --mitigation "Applied fix XYZ"
 ```
 
-## accept-risk
+## `accept-risk`
 
 Accept risk for a finding.
 
@@ -157,7 +157,7 @@ defectdojo findings accept-risk \
   --owner "Security Team"
 ```
 
-## delete
+## `delete`
 
 Delete a finding.
 

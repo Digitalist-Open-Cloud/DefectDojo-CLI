@@ -2,6 +2,7 @@ import json
 import sys
 import argparse
 import os
+import re
 from jinja2 import Environment, FileSystemLoader
 import markdown
 from rich_argparse import RichHelpFormatter
@@ -13,6 +14,23 @@ TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
 
 
+def _convert_bare_urls_to_markdown(text):
+    url_pattern = re.compile(r'(?<!\[)(?<!\])(https?://[^\s\)"\'<>]+)')
+    return url_pattern.sub(r'[\1](\1)', text)
+
+
+def _markdown_convert(text):
+    text = _convert_bare_urls_to_markdown(text)
+    html = markdown.markdown(
+        text,
+        extensions=['nl2br', 'tables', 'fenced_code']
+    )
+    html = html.replace('<h1>', '<h4>').replace('</h1>', '</h4>')
+    html = html.replace('<h2>', '<h4>').replace('</h2>', '</h4>')
+    html = html.replace('<h3>', '<h4>').replace('</h3>', '</h4>')
+    return html
+
+
 def _render_html_from_json(json_data, active_only=False, template_path=None):
     findings = json_data.get("findings", [])
     if active_only:
@@ -20,30 +38,15 @@ def _render_html_from_json(json_data, active_only=False, template_path=None):
 
     for finding in findings:
         if finding.get("description"):
-            finding["description_html"] = markdown.markdown(
-                finding["description"],
-                extensions=['nl2br', 'tables', 'fenced_code']
-            )
+            finding["description_html"] = _markdown_convert(finding["description"])
         if finding.get("mitigation"):
-            finding["mitigation_html"] = markdown.markdown(
-                finding["mitigation"],
-                extensions=['nl2br', 'tables', 'fenced_code']
-            )
+            finding["mitigation_html"] = _markdown_convert(finding["mitigation"])
         if finding.get("impact"):
-            finding["impact_html"] = markdown.markdown(
-                finding["impact"],
-                extensions=['nl2br', 'tables', 'fenced_code']
-            )
+            finding["impact_html"] = _markdown_convert(finding["impact"])
         if finding.get("steps_to_reproduce"):
-            finding["steps_to_reproduce_html"] = markdown.markdown(
-                finding["steps_to_reproduce"],
-                extensions=['nl2br', 'tables', 'fenced_code']
-            )
+            finding["steps_to_reproduce_html"] = _markdown_convert(finding["steps_to_reproduce"])
         if finding.get("references"):
-            finding["references_html"] = markdown.markdown(
-                finding["references"],
-                extensions=['nl2br', 'tables', 'fenced_code']
-            )
+            finding["references_html"] = _markdown_convert(finding["references"])
 
     severity_counts = {"critical": 0, "high": 0, "medium": 0, "low": 0, "info": 0}
     for finding in findings:
@@ -103,11 +106,6 @@ class Reports(object):
         include_finding_notes=False,
         include_finding_images=False,
         include_table_of_contents=False,
-        active=None,
-        verified=None,
-        false_p=None,
-        duplicate=None,
-        minimum_severity="Info",
         title="",
         filename=None,
         **kwargs,
@@ -120,19 +118,10 @@ class Reports(object):
             "include_finding_notes": include_finding_notes,
             "include_finding_images": include_finding_images,
             "include_table_of_contents": include_table_of_contents,
-            "minimum_severity": minimum_severity,
         }
 
         if title:
             payload["title"] = title
-        if active is True:
-            payload["active"] = 2
-        if verified is not None:
-            payload["verified"] = verified
-        if false_p is not None:
-            payload["false_p"] = false_p
-        if duplicate is not None:
-            payload["duplicate"] = duplicate
 
         payload_json = json.dumps(payload)
 
@@ -184,7 +173,7 @@ class Reports(object):
         optional.add_argument(
             "--report_type",
             help="Report type",
-            choices=["HTML", "JSON", "CSV"],
+            choices=["HTML", "JSON"],
             default="HTML",
         )
         optional.add_argument(
@@ -218,39 +207,13 @@ class Reports(object):
         )
         optional.add_argument(
             "--active",
-            help="Filter to active findings only (default: include all)",
+            help="Filter to active findings only (client-side)",
             action="store_true",
             default=False,
         )
         optional.add_argument(
-            "--verified",
-            help="Include verified findings",
-            type=int,
-            choices=[1, 2, 3],
-        )
-        optional.add_argument(
-            "--false_p",
-            help="Include false positive findings",
-            type=int,
-            choices=[1, 2, 3],
-            default=2,
-        )
-        optional.add_argument(
-            "--duplicate",
-            help="Include duplicate findings",
-            type=int,
-            choices=[1, 2, 3],
-            default=2,
-        )
-        optional.add_argument(
-            "--minimum_severity",
-            help="Minimum severity to include",
-            choices=["Info", "Low", "Medium", "High", "Critical"],
-            default="Info",
-        )
-        optional.add_argument(
             "--filename",
-            help="Save report to file (default: output to stdout for JSON/HTML/CSV, binary for PDF)",
+            help="Save report to file (default: output to stdout for JSON/HTML)",
         )
         optional.add_argument(
             "--template",
@@ -305,11 +268,6 @@ class Reports(object):
         include_finding_notes=False,
         include_finding_images=False,
         include_table_of_contents=False,
-        active=None,
-        verified=None,
-        false_p=None,
-        duplicate=None,
-        minimum_severity="Info",
         title="",
         filename=None,
         **kwargs,
@@ -322,19 +280,10 @@ class Reports(object):
             "include_finding_notes": include_finding_notes,
             "include_finding_images": include_finding_images,
             "include_table_of_contents": include_table_of_contents,
-            "minimum_severity": minimum_severity,
         }
 
         if title:
             payload["title"] = title
-        if active is True:
-            payload["active"] = 2
-        if verified is not None:
-            payload["verified"] = verified
-        if false_p is not None:
-            payload["false_p"] = false_p
-        if duplicate is not None:
-            payload["duplicate"] = duplicate
 
         payload_json = json.dumps(payload)
 
@@ -386,7 +335,7 @@ class Reports(object):
         optional.add_argument(
             "--report_type",
             help="Report type",
-            choices=["HTML", "PDF", "JSON", "CSV"],
+            choices=["HTML", "JSON"],
             default="HTML",
         )
         optional.add_argument(
@@ -420,39 +369,13 @@ class Reports(object):
         )
         optional.add_argument(
             "--active",
-            help="Filter to active findings only (default: include all)",
+            help="Filter to active findings only (client-side)",
             action="store_true",
             default=False,
         )
         optional.add_argument(
-            "--verified",
-            help="Include verified findings",
-            type=int,
-            choices=[1, 2, 3],
-        )
-        optional.add_argument(
-            "--false_p",
-            help="Include false positive findings",
-            type=int,
-            choices=[1, 2, 3],
-            default=2,
-        )
-        optional.add_argument(
-            "--duplicate",
-            help="Include duplicate findings",
-            type=int,
-            choices=[1, 2, 3],
-            default=2,
-        )
-        optional.add_argument(
-            "--minimum_severity",
-            help="Minimum severity to include",
-            choices=["Info", "Low", "Medium", "High", "Critical"],
-            default="Info",
-        )
-        optional.add_argument(
             "--filename",
-            help="Save report to file (default: output to stdout for JSON/HTML/CSV, binary for PDF)",
+            help="Save report to file (default: output to stdout for JSON/HTML)",
         )
         optional.add_argument(
             "--template",

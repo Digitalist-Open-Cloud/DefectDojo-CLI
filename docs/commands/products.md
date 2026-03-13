@@ -40,7 +40,7 @@ defectdojo products list \
   --json
 ```
 
-## create
+## `create`
 
 Create a new product.
 
@@ -78,7 +78,7 @@ defectdojo products create \
   --prod_type 1
 ```
 
-## create-if-not-exists
+## `create-if-not-exists`
 
 Create a product only if it doesn't already exist.
 

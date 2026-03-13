@@ -6,7 +6,7 @@ Manage API token authentication for DefectDojo.
 
 - `api-token-auth` - Get API token details
 
-## api-token-auth
+## `api-token-auth`
 
 Get information about the API token.
 
