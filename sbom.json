@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:4e209ac4-282c-4a25-ba13-4bdafa6fb069",
+  "serialNumber": "urn:uuid:1b0d99ab-3558-4abe-948a-fb0cf28599fa",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-03-13T23:27:40+00:00",
+    "timestamp": "2026-03-13T23:43:00+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "bf99ee06-14ce-4e50-8875-120172462ab8",
+      "bom-ref": "93bb920a-4e65-4a3d-84af-a3a98a4344ad",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "036413dd-8fa0-4118-87e6-bd6c32d941fd",
+      "bom-ref": "c9733bcf-c4c9-46db-9aee-9d4e1dfffca4",
       "type": "application",
       "name": "poetry.lock",
       "properties": [
@@ -302,7 +302,13 @@
   ],
   "dependencies": [
     {
-      "ref": "036413dd-8fa0-4118-87e6-bd6c32d941fd",
+      "ref": "93bb920a-4e65-4a3d-84af-a3a98a4344ad",
+      "dependsOn": [
+        "c9733bcf-c4c9-46db-9aee-9d4e1dfffca4"
+      ]
+    },
+    {
+      "ref": "c9733bcf-c4c9-46db-9aee-9d4e1dfffca4",
       "dependsOn": [
         "pkg:pypi/jinja2@3.1.6",
         "pkg:pypi/markdown@3.10.2",
@@ -310,12 +316,6 @@
         "pkg:pypi/rich-argparse@1.7.2",
         "pkg:pypi/setuptools@78.1.1",
         "pkg:pypi/tabulate@0.10.0"
-      ]
-    },
-    {
-      "ref": "bf99ee06-14ce-4e50-8875-120172462ab8",
-      "dependsOn": [
-        "036413dd-8fa0-4118-87e6-bd6c32d941fd"
       ]
     },
     {
