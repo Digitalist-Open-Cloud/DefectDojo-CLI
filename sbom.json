@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:1bc0219b-381b-4d52-82dd-f3ce104f7594",
+  "serialNumber": "urn:uuid:668cc7ca-7a6f-49d8-8d19-8c3e0acd28c6",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-11-21T23:51:29+00:00",
+    "timestamp": "2026-03-13T10:46:57+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "fc97a486-3eb1-459a-ae37-6ab573f0bb7b",
+      "bom-ref": "d6c6cd4f-3993-4ac8-8357-1e9c2d14d358",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "3b386887-b9fd-4291-a2b3-7295b47c16c8",
+      "bom-ref": "1dd1e31d-88ec-4c43-a420-5084227b1278",
       "type": "application",
       "name": "poetry.lock",
       "properties": [
@@ -96,6 +96,23 @@
       ]
     },
     {
+      "bom-ref": "pkg:pypi/jinja2@3.1.6",
+      "type": "library",
+      "name": "jinja2",
+      "version": "3.1.6",
+      "purl": "pkg:pypi/jinja2@3.1.6",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "jinja2@3.1.6"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "poetry"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:pypi/markdown-it-py@4.0.0",
       "type": "library",
       "name": "markdown-it-py",
@@ -105,6 +122,40 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "markdown-it-py@4.0.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "poetry"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:pypi/markdown@3.10.2",
+      "type": "library",
+      "name": "markdown",
+      "version": "3.10.2",
+      "purl": "pkg:pypi/markdown@3.10.2",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "markdown@3.10.2"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "poetry"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:pypi/markupsafe@3.0.3",
+      "type": "library",
+      "name": "markupsafe",
+      "version": "3.0.3",
+      "purl": "pkg:pypi/markupsafe@3.0.3",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "markupsafe@3.0.3"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -251,8 +302,10 @@
   ],
   "dependencies": [
     {
-      "ref": "3b386887-b9fd-4291-a2b3-7295b47c16c8",
+      "ref": "1dd1e31d-88ec-4c43-a420-5084227b1278",
       "dependsOn": [
+        "pkg:pypi/jinja2@3.1.6",
+        "pkg:pypi/markdown@3.10.2",
         "pkg:pypi/requests@2.32.5",
         "pkg:pypi/rich-argparse@1.7.2",
         "pkg:pypi/setuptools@78.1.1",
@@ -260,9 +313,9 @@
       ]
     },
     {
-      "ref": "fc97a486-3eb1-459a-ae37-6ab573f0bb7b",
+      "ref": "d6c6cd4f-3993-4ac8-8357-1e9c2d14d358",
       "dependsOn": [
-        "3b386887-b9fd-4291-a2b3-7295b47c16c8"
+        "1dd1e31d-88ec-4c43-a420-5084227b1278"
       ]
     },
     {
@@ -278,10 +331,24 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:pypi/jinja2@3.1.6",
+      "dependsOn": [
+        "pkg:pypi/markupsafe@3.0.3"
+      ]
+    },
+    {
       "ref": "pkg:pypi/markdown-it-py@4.0.0",
       "dependsOn": [
         "pkg:pypi/mdurl@0.1.2"
       ]
+    },
+    {
+      "ref": "pkg:pypi/markdown@3.10.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/markupsafe@3.0.3",
+      "dependsOn": []
     },
     {
       "ref": "pkg:pypi/mdurl@0.1.2",
