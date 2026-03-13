@@ -79,13 +79,13 @@ def _render_html_from_json(json_data, active_only=False, template_path=None):
         template = jinja_env.get_template("report.html")
 
     return template.render(
-        report_name=json_data.get("report_name", "Security Report"),
+        report_name=json_data.get("report_name", "Security report"),
         report_info=json_data.get("report_info", ""),
         product=json_data.get("product"),
         engagement=json_data.get("engagement"),
         findings=findings,
         severity_counts=severity_counts,
-        team_name=json_data.get("team_name", "Security Team"),
+        team_name=json_data.get("team_name", "Security team"),
     )
 
 

@@ -6,43 +6,29 @@
     <title>{{ report_name }}</title>
     <style>
       :root {
-        --primary: #99999;
-        --primary-dark: #00000;
         --secondary: #64748b;
-        --success: #780000;
-        --warning: #dc0000;
-        --danger: #fd8c00;
-        --critical: #fdc500;
         --info: #3b82f6;
         --light: #f8fafc;
-        --dark: #1e293b;
+        --dark: #1a1a1a;
         --border: #e2e8f0;
         --bg-card: #ffffff;
         --bg-body: #f1f5f9;
       }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         background-color: var(--bg-body);
         color: var(--dark);
         line-height: 1.6;
         padding: 2rem;
       }
 
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
+      .container { max-width: 1200px; margin: 0 auto; }
 
       .header {
-        background: #000000;
+        background: var(--dark);
         color: white;
         padding: 2.5rem;
         border-radius: 8px;
@@ -50,16 +36,8 @@
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
 
-      .header h1 {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .header .meta {
-        opacity: 0.9;
-        font-size: 0.95rem;
-      }
+      .header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+      .header .meta { opacity: 0.9; font-size: 0.95rem; }
 
       .grid {
         display: grid;
@@ -76,35 +54,14 @@
         max-width: 100%;
       }
 
-      @media (max-width: 900px) {
-        .grid-severity {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
+      @media (max-width: 900px) { .grid-severity { grid-template-columns: repeat(3, 1fr); } }
+      @media (max-width: 600px) { .grid-severity { grid-template-columns: repeat(2, 1fr); } }
 
-      @media (max-width: 600px) {
-        .grid-severity {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
+      .grid-single { grid-template-columns: 1fr; }
 
-      .grid-single {
-        grid-template-columns: 1fr;
-      }
-
-      .card-total {
-        background: var(--dark);
-        color: white;
-        text-align: center;
-      }
-
-      .card-total h3 {
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      .card-total .value {
-        color: white;
-      }
+      .card-total { background: var(--dark); color: white; text-align: center; }
+      .card-total h3 { color: rgba(255, 255, 255, 0.8); }
+      .card-total .value { color: white; }
 
       .card {
         background: var(--bg-card);
@@ -123,27 +80,12 @@
         margin-bottom: 0.75rem;
       }
 
-      .card .value {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--dark);
-      }
-
-      .card .value.critical {
-        color: var(--critical);
-      }
-      .card .value.high {
-        color: var(--danger);
-      }
-      .card .value.medium {
-        color: var(--warning);
-      }
-      .card .value.low {
-        color: var(--success);
-      }
-      .card .value.info {
-        color: var(--info);
-      }
+      .card .value { font-size: 1.75rem; font-weight: 700; color: var(--dark); }
+      .card .value.critical { color: #7c3aed; }
+      .card .value.high { color: #ef4444; }
+      .card .value.medium { color: #f59e0b; }
+      .card .value.low { color: #10b981; }
+      .card .value.info { color: var(--info); }
 
       .severity-badge {
         display: inline-block;
@@ -154,26 +96,11 @@
         text-transform: uppercase;
       }
 
-      .severity-critical {
-        background: #000000;
-        color: var(--critical);
-      }
-      .severity-high {
-        background: #fee2e2;
-        color: var(--danger);
-      }
-      .severity-medium {
-        background: #fef3c7;
-        color: #b45309;
-      }
-      .severity-low {
-        background: #d1fae5;
-        color: #047857;
-      }
-      .severity-info {
-        background: #dbeafe;
-        color: var(--info);
-      }
+      .severity-critical { background: #ede9fe; color: #7c3aed; }
+      .severity-high { background: #fee2e2; color: #ef4444; }
+      .severity-medium { background: #fef3c7; color: #b45309; }
+      .severity-low { background: #d1fae5; color: #047857; }
+      .severity-info { background: #dbeafe; color: var(--info); }
 
       .section {
         background: var(--bg-card);
@@ -201,73 +128,19 @@
         transition: box-shadow 0.2s;
       }
 
-      .finding:hover {
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      }
+      .finding:hover { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+      .finding:last-child { margin-bottom: 0; }
 
-      .finding:last-child {
-        margin-bottom: 0;
-      }
+      .finding-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem; }
+      .finding-title { font-weight: 600; font-size: 1rem; color: var(--dark); }
+      .finding-meta { display: flex; gap: 1rem; font-size: 0.85rem; color: var(--secondary); margin-top: 0.5rem; }
 
-      .finding-header {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 1rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .finding-title {
-        font-weight: 600;
-        font-size: 1rem;
-        color: var(--dark);
-      }
-
-      .finding-meta {
-        display: flex;
-        gap: 1rem;
-        font-size: 0.85rem;
-        color: var(--secondary);
-        margin-top: 0.5rem;
-      }
-
-      .finding-description {
-        font-size: 0.9rem;
-        color: #475569;
-        margin-top: 0.75rem;
-        padding-top: 0.75rem;
-        border-top: 1px solid var(--border);
-      }
-
-      .finding-description pre,
-      .finding-mitigation pre,
-      .finding-impact pre,
-      .finding-steps pre {
-        background: var(--light);
-        padding: 0.75rem;
-        border-radius: 6px;
-        overflow-x: auto;
-        font-size: 0.8rem;
-        margin-top: 0.5rem;
-        font-family: "Courier New", Courier, monospace;
-      }
-
-      .finding-description code,
-      .finding-file-path code,
-      .finding-mitigation code,
-      .finding-impact code,
-      .finding-steps code {
-        background: var(--light);
-        padding: 0.2rem 0.4rem;
-        border-radius: 3px;
-        font-family: "Courier New", Courier, monospace;
-        font-size: 0.85em;
-      }
-
+      .finding-description,
       .finding-mitigation,
       .finding-impact,
       .finding-steps,
-      .finding-references {
+      .finding-references,
+      .finding-file-path {
         font-size: 0.9rem;
         color: #475569;
         margin-top: 0.75rem;
@@ -283,14 +156,30 @@
         border-top: 1px solid var(--border);
       }
 
+      .finding-description pre,
+      .finding-mitigation pre,
+      .finding-impact pre,
+      .finding-steps pre,
       .finding-request-response pre {
         background: var(--light);
         padding: 0.75rem;
         border-radius: 6px;
         overflow-x: auto;
-        font-size: 0.75rem;
-        margin: 0.5rem 0;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
         font-family: "Courier New", Courier, monospace;
+      }
+
+      .finding-description code,
+      .finding-mitigation code,
+      .finding-impact code,
+      .finding-steps code,
+      .finding-file-path code {
+        background: var(--light);
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.85em;
       }
 
       .finding-mitigation h4,
@@ -303,70 +192,21 @@
         color: var(--dark);
         margin-bottom: 0.5rem;
       }
-      .finding-file-path {
-        font-size: 0.9rem;
-        color: #475569;
-        margin-top: 0.75rem;
-        padding-top: 0.75rem;
-        border-top: 1px solid var(--border);
-      }
 
-      .product-info {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
+      .product-info { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .product-info .item { padding: 0.5rem 0; }
+      .product-info .label { font-size: 0.8rem; color: var(--secondary); font-weight: 500; }
+      .product-info .content { font-size: 0.95rem; color: var(--dark); }
 
-      .product-info .item {
-        padding: 0.5rem 0;
-      }
+      .footer { background: var(--dark); color: white; padding: 2rem; margin-top: 2rem; text-align: center; }
 
-      .product-info .label {
-        font-size: 0.8rem;
-        color: var(--secondary);
-        font-weight: 500;
-      }
-
-      .product-info .content {
-        font-size: 0.95rem;
-        color: var(--dark);
-      }
-
-      .footer {
-        text-align: center;
-        padding: 2rem;
-        color: var(--secondary);
-        font-size: 0.85rem;
-      }
-
-      .empty-state {
-        text-align: center;
-        padding: 3rem;
-        color: var(--secondary);
-      }
-
-      li {
-        list-style: circle inside;
-      }
-
-      hr {
-        height: 1px;
-        border-width: 0;
-        color: gray;
-        background-color: gray;
-        margin: 8px 0;
-      }
+      .empty-state { text-align: center; padding: 3rem; color: var(--secondary); }
+      li { list-style: circle inside; }
+      hr { height: 1px; border-width: 0; color: gray; background-color: gray; margin: 8px 0; }
 
       @media print {
-        body {
-          padding: 0;
-          background: white;
-        }
-        .card,
-        .section {
-          box-shadow: none;
-          border: 1px solid #ddd;
-        }
+        body { padding: 0; background: white; }
+        .card, .section { box-shadow: none; border: 1px solid #ddd; }
       }
     </style>
   </head>
@@ -409,7 +249,7 @@
 
       {% if product %}
       <div class="section">
-        <h2>Product Information</h2>
+        <h2>Product information</h2>
         <div class="product-info">
           <div class="item">
             <div class="label">Name</div>
@@ -424,7 +264,7 @@
             <div class="content">{{ product.created[:10] }}</div>
           </div>
           <div class="item">
-            <div class="label">Findings Count</div>
+            <div class="label">Findings count</div>
             <div class="content">{{ product.findings_count }}</div>
           </div>
           <div class="item" style="grid-column: span 2">
@@ -446,11 +286,11 @@
             <div class="content">{{ engagement.status }}</div>
           </div>
           <div class="item">
-            <div class="label">Target Start</div>
+            <div class="label">Target start</div>
             <div class="content">{{ engagement.target_start or 'N/A' }}</div>
           </div>
           <div class="item">
-            <div class="label">Target End</div>
+            <div class="label">Target end</div>
             <div class="content">{{ engagement.target_end or 'N/A' }}</div>
           </div>
           <div class="item">
@@ -529,7 +369,9 @@
         {% endif %}
       </div>
 
-      <div class="footer">Generated by DefectDojo CLI | {{ team_name }}</div>
+      <div class="footer">
+        Generated by DefectDojo CLI | {{ team_name }}
+      </div>
     </div>
   </body>
 </html>
