@@ -68,6 +68,44 @@
         margin-bottom: 2rem;
       }
 
+      .grid-severity {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+        max-width: 100%;
+      }
+
+      @media (max-width: 900px) {
+        .grid-severity {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .grid-severity {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .grid-single {
+        grid-template-columns: 1fr;
+      }
+
+      .card-total {
+        background: var(--dark);
+        color: white;
+        text-align: center;
+      }
+
+      .card-total h3 {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .card-total .value {
+        color: white;
+      }
+
       .card {
         background: var(--bg-card);
         border-radius: 8px;
@@ -339,11 +377,14 @@
         <div class="meta">{{ report_info }}</div>
       </div>
 
-      <div class="grid">
-        <div class="card">
+      <div class="grid grid-single">
+        <div class="card card-total">
           <h3>Total Findings</h3>
           <div class="value">{{ findings|length }}</div>
         </div>
+      </div>
+
+      <div class="grid grid-severity">
         <div class="card">
           <h3>Critical</h3>
           <div class="value critical">{{ severity_counts.critical }}</div>
