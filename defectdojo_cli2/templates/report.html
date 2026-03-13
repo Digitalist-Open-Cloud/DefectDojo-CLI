@@ -6,8 +6,8 @@
     <title>{{ report_name }}</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
+            --primary: #99999;
+            --primary-dark: #00000;
             --secondary: #64748b;
             --success: #780000;
             --warning: #dc0000;
@@ -41,10 +41,10 @@
         }
 
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: #000000;
             color: white;
             padding: 2.5rem;
-            border-radius: 12px;
+            border-radius: 8px;
             margin-bottom: 2rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
@@ -69,7 +69,7 @@
 
         .card {
             background: var(--bg-card);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 1.5rem;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
             border: 1px solid var(--border);
@@ -113,7 +113,7 @@
 
         .section {
             background: var(--bg-card);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -443,16 +443,16 @@
                         </p>
                     </div>
                     {% endif %}
+                    {% if finding.request_response_html %}
+                    <div class="finding-request-response">
+                        <strong>Request and response:</strong>
+                        {{ finding.request_response_html|safe }}
+                    </div>
+                    {% endif %}
                     {% if finding.references_html %}
                     <div class="finding-references">
                         <strong>References:</strong>
                         {{ finding.references_html|safe }}
-                    </div>
-                    {% endif %}
-                    {% if finding.request_response_html %}
-                    <div class="finding-request-response">
-                        <strong>Request/Response:</strong>
-                        {{ finding.request_response_html|safe }}
                     </div>
                     {% endif %}
                 </div>
