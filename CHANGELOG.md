@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.21] - 2026-03-14
+
+### Fixed
+
+- Misspelling in code.
+
+## [0.1.20] - 2026-03-13
+
+### Added
+
+- More output for reports.
+
 ## [0.1.19] - 2026-03-13
 
 ### Added
