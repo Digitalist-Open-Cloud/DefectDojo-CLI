@@ -47,6 +47,20 @@ def _render_html_from_json(json_data, active_only=False, template_path=None):
             finding["steps_to_reproduce_html"] = _markdown_convert(finding["steps_to_reproduce"])
         if finding.get("references"):
             finding["references_html"] = _markdown_convert(finding["references"])
+        if finding.get("file_path"):
+            finding["file_path_html"] = finding["file_path"]
+        if finding.get("line"):
+            finding["line_html"] = finding["line"]
+        
+        req_resp = finding.get("request_response", {})
+        req_list = req_resp.get("req_resp", [])
+        if req_list:
+            req_resp_md = ""
+            for idx, item in enumerate(req_list):
+                if idx > 0:
+                    req_resp_md += "\n\n---\n\n"
+                req_resp_md += "**Request:**\n```\n" + item.get("request", "") + "\n```\n\n**Response:**\n```\n" + item.get("response", "") + "\n```"
+            finding["request_response_html"] = _markdown_convert(req_resp_md)
 
     severity_counts = {"critical": 0, "high": 0, "medium": 0, "low": 0, "info": 0}
     for finding in findings:

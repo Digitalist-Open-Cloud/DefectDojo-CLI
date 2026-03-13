@@ -189,6 +189,7 @@
         }
 
         .finding-description code,
+        .finding-file-path code,
         .finding-mitigation code,
         .finding-impact code,
         .finding-steps code {
@@ -210,10 +211,41 @@
             border-top: 1px solid var(--border);
         }
 
+        .finding-request-response {
+            font-size: 0.85rem;
+            color: #475569;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .finding-request-response pre {
+            background: var(--light);
+            padding: 0.75rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.75rem;
+            margin: 0.5rem 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
         .finding-mitigation strong,
         .finding-impact strong,
         .finding-steps strong,
-        .finding-references strong {
+        .finding-references strong,
+        .finding-request-response strong {
+            display: block;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        .finding-file-path  {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+        }
+        .finding-file-path strong {
             display: block;
             color: var(--dark);
             margin-bottom: 0.5rem;
@@ -252,6 +284,18 @@
             padding: 3rem;
             color: var(--secondary);
         }
+
+        li {
+            list-style: circle inside
+        }
+
+        hr {
+            height: 1px;
+            border-width: 0;
+            color: gray;
+            background-color: gray;
+            margin: 8px 0;
+          }
 
         @media print {
             body { padding: 0; background: white; }
@@ -391,10 +435,24 @@
                         {{ finding.steps_to_reproduce_html|safe }}
                     </div>
                     {% endif %}
+                    {% if finding.file_path_html %}
+                    <div class="finding-file-path">
+                        <p>
+                        <strong>File:</strong>
+                        <code>{{ finding.file_path_html }} {% if finding.line_html %}<br />&nbsp;Line: {{ finding.line_html }} {% endif %}</code>
+                        </p>
+                    </div>
+                    {% endif %}
                     {% if finding.references_html %}
                     <div class="finding-references">
                         <strong>References:</strong>
                         {{ finding.references_html|safe }}
+                    </div>
+                    {% endif %}
+                    {% if finding.request_response_html %}
+                    <div class="finding-request-response">
+                        <strong>Request/Response:</strong>
+                        {{ finding.request_response_html|safe }}
                     </div>
                     {% endif %}
                 </div>
