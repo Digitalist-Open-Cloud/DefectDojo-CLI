@@ -1,4 +1,11 @@
-# Change log
+# Changelog
+
+## [0.1.19] - 2026-03-13
+
+### Added
+
+- Reports command (with help from opencode using Big Pickle)
+- docs folder with examples (mostly generated with opencode using Big Pickle)
 
 ## [0.1.18] - 2025-11-22
 
