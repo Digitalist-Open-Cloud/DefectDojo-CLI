@@ -39,6 +39,9 @@ defectdojo reports generate-for-product [OPTIONS]
 | `--filename FILENAME` | Save report to file | stdout |
 | `--template TEMPLATE` | Custom HTML template file path | built-in template |
 
+Please not that some if these options are work in progress, `--active`,
+`--filename` and `--report_type` do work as intended.
+
 ### Examples
 
 ```shell
