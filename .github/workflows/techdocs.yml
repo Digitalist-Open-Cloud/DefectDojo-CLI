@@ -10,7 +10,7 @@ jobs:
   publish:
     uses: Digitalist-Open-Cloud/BackstageTechDocs/.github/workflows/publish-techdocs.yml@main
     with:
-      entity-name: python.library.open-webui-sqlite-migration
+      entity-name: python.defectdojo-cli
       entity-kind: Component
       entity-namespace: default
       s3-endpoint: https://hel1.your-objectstorage.com
